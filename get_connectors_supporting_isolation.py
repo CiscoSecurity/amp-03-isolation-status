@@ -23,7 +23,7 @@ response_json = response.json()
 data = response_json['data']
 
 # Container for holding the GUIDs
-connectors_supporting_isolaiton = {}
+connectors_supporting_isolation = {}
 
 # Iterate over the response data
 for connector in data:
@@ -36,11 +36,11 @@ for connector in data:
 
     # Check if the connector has isolation available regardless of state
     if available:
-        # Add the connector and hostname to connectors_supporting_isolaiton
-        connectors_supporting_isolaiton[connector_guid] = hostname
+        # Add the connector and hostname to connectors_supporting_isolation
+        connectors_supporting_isolation[connector_guid] = hostname
 
 # Print the number of connectors found in the first 500 results
-print('Connectors found: {}'.format(len(connectors_supporting_isolaiton)))
+print('Connectors found: {}'.format(len(connectors_supporting_isolation)))
 
 # Paginate through the rest of the results
 while 'next' in response_json['metadata']['links']:
@@ -77,18 +77,18 @@ while 'next' in response_json['metadata']['links']:
     print('Connectors found: {}'.format(len(additional_connectors)))
 
     # Add the connectors from this page to the initial container
-    connectors_supporting_isolaiton.update(additional_connectors)
+    connectors_supporting_isolation.update(additional_connectors)
 
 # Print the total number of connectors found
 print('Total connectors found that support isolation: {}'.format(
-    len(connectors_supporting_isolaiton)))
+    len(connectors_supporting_isolation)))
 
-# Write the GUIDs to a file named 'connectors_supporting_isolaiton.txt'
-if connectors_supporting_isolaiton:
-    print('\nWriting connector GUIDs to connectors_supporting_isolaiton.txt')
-    with open('connectors_supporting_isolaiton.txt', 'w') as file:
+# Write the GUIDs to a file named 'connectors_supporting_isolation.txt'
+if connectors_supporting_isolation:
+    print('\nWriting connector GUIDs to connectors_supporting_isolation.txt')
+    with open('connectors_supporting_isolation.txt', 'w') as file:
         # Iterate over the stored GUIDs
-        for guid in connectors_supporting_isolaiton:
+        for guid in connectors_supporting_isolation:
             # Write the GUID to the file
             file.write('{}\n'.format(guid))
 else:
