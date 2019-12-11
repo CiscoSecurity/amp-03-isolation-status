@@ -24,7 +24,7 @@ data = response_json['data']
 
 # Container for holding the GUIDs
 connectors_in_transition = {}
- 
+
 # Iterate over the response data
 for connector in data:
     # Name the elements from the connector that are needed

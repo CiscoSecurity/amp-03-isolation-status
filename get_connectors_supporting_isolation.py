@@ -93,4 +93,4 @@ if connectors_supporting_isolation:
             file.write('{}\n'.format(guid))
 else:
     print('\nNothing to write to disk')
-
+    

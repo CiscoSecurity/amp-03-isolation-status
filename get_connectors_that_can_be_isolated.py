@@ -24,7 +24,7 @@ data = response_json['data']
 
 # Container for holding the GUIDs
 connectors_that_can_be_isolated = {}
- 
+
 # Iterate over the response data
 for connector in data:
     # Name the elements from the connector that are needed
